@@ -15,14 +15,14 @@ const server = http.createServer(app);
 const io = new Server(server, {
   transports: ["websocket"],
   cors: {
-    origin: "*",
+    origin: config.clientUrl,
     methods: ["GET", "POST"],
   },
 });
 initializeSocket(io);
 
 // Middleware
-app.use(cors({ origin: "*" }));
+app.use(cors({ origin: config.clientUrl }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
