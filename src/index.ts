@@ -14,14 +14,14 @@ const server = http.createServer(app);
 // Initialize Socket.IO
 const io = new Server(server, {
   cors: {
-    origin: config.clientUrl,
+    origin: "*",
     methods: ['GET', 'POST'],
   },
 });
 initializeSocket(io);
 
 // Middleware
-app.use(cors({ origin: config.clientUrl }));
+app.use(cors({ origin: "*", }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
